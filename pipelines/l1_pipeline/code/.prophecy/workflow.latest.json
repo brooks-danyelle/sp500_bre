@@ -138,7 +138,7 @@
         "cache" : false,
         "detailedStats" : false,
         "isImported" : false,
-        "comment" : "Assigns a size category to each company, enabling segmentation by company scale.",
+        "comment" : "Assigns company size categories and flags businesses that may pose investment risks.",
         "autoUpdateComment" : true,
         "dataPreview" : false,
         "showRecordsCount" : false
@@ -341,6 +341,45 @@
               "format" : "python"
             }
           }
+        }, {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "flag_investment_risk()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Marketcap",
+              "hasError" : false
+            }, {
+              "paramName" : "Revenuegrowth",
+              "hasError" : false
+            }, {
+              "paramName" : "Ebitda",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
         } ],
         "activeTab" : "transformations",
         "columnsSelector" : [ ]
@@ -359,7 +398,23 @@
     "autoUpdateOnRun" : false
   },
   "diagnostics" : [ {
-    "property" : "$.workflow.metainfo.functions.businessRules.rules[0].data",
+    "property" : "$.workflow.metainfo.functions.businessRules.rules[4].data[1].outputs[0]",
+    "range" : {
+      "start" : {
+        "line" : 0,
+        "character" : 0
+      },
+      "end" : {
+        "line" : 0,
+        "character" : 0
+      }
+    },
+    "severity" : 2,
+    "message" : "Empty expression for column: `Workforce_Size` at row = 2. Please provide a valid output expression. Default expression: NULL.",
+    "tags" : [ ],
+    "relatedInformation" : [ ]
+  }, {
+    "property" : "$.workflow.metainfo.functions.businessRules.rules[4].data",
     "range" : {
       "start" : {
         "line" : 0,
@@ -372,6 +427,22 @@
     },
     "severity" : 2,
     "message" : "Missing data for the case when all the inputs are `Any`",
+    "tags" : [ ],
+    "relatedInformation" : [ ]
+  }, {
+    "property" : "$.workflow.metainfo.functions.businessRules.rules[4].data[1]",
+    "range" : {
+      "start" : {
+        "line" : 0,
+        "character" : 0
+      },
+      "end" : {
+        "line" : 0,
+        "character" : 0
+      }
+    },
+    "severity" : 1,
+    "message" : "Invalid SQL Expression at row = 2 Error: \n[PARSE_SYNTAX_ERROR] Syntax error at or near '('.(line 1, pos 11)\n\n== SQL ==\nCASE  WHEN ( Fulltimeemployees BETWEEN >= 100000 and <10000 ) THEN NULL END\n-----------^^^\n",
     "tags" : [ ],
     "relatedInformation" : [ ]
   } ]

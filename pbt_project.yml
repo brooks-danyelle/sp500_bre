@@ -70,6 +70,30 @@ functions:
       outputs: []
       author: brooks.danyelle@prophecy.io
       createdAt: '2022-12-15 18:04:50'
+    businessRules/regional_classification:
+      name: regional_classification
+      description: ''
+      tags: []
+      inputs: []
+      outputs: []
+      author: brooks.danyelle@prophecy.io
+      createdAt: '2022-12-15 18:04:50'
+    businessRules/tech_subsector_class:
+      name: tech_subsector_class
+      description: ''
+      tags: []
+      inputs: []
+      outputs: []
+      author: brooks.danyelle@prophecy.io
+      createdAt: '2022-12-15 18:04:50'
+    businessRules/employee_scale:
+      name: employee_scale
+      description: ''
+      tags: []
+      inputs: []
+      outputs: []
+      author: brooks.danyelle@prophecy.io
+      createdAt: '2022-12-15 18:04:50'
 subgraphs: {}
 sqlModels: {}
 sqlSnapshots: {}
