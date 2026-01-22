@@ -1,0 +1,69 @@
+version: 1
+schema:
+  type: struct
+  fields:
+  - name: date
+    type: date
+    nullable: true
+    metadata:
+      description: The trading day for the stock data, formatted as YYYY-MM-DD.
+      mappings: []
+      tags: []
+  - name: symbol
+    type: string
+    nullable: true
+    metadata:
+      description: The ticker symbol representing the specific stock.
+      mappings: []
+      tags: []
+  - name: open
+    type: double
+    nullable: true
+    metadata:
+      description: The price at which the stock started trading on the given day.
+      mappings: []
+      tags: []
+  - name: high
+    type: double
+    nullable: true
+    metadata:
+      description: The highest price reached by the stock during the trading day.
+      mappings: []
+      tags: []
+  - name: low
+    type: double
+    nullable: true
+    metadata:
+      description: The lowest price reached by the stock during the trading day.
+      mappings: []
+      tags: []
+  - name: close
+    type: double
+    nullable: true
+    metadata:
+      description: The final trading price of the stock at the end of the trading
+        day.
+      mappings: []
+      tags: []
+  - name: adj_close
+    type: double
+    nullable: true
+    metadata:
+      description: The closing price of the stock adjusted for dividends and splits,
+        reflecting the true value for investors.
+      mappings: []
+      tags: []
+  - name: volume
+    type: long
+    nullable: true
+    metadata:
+      description: The total number of shares traded during the trading day.
+      mappings: []
+      tags: []
+  - name: ingested_at
+    type: timestamp
+    nullable: true
+    metadata:
+      description: The timestamp when the stock data was recorded into the system.
+      mappings: []
+      tags: []

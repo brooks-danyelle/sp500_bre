@@ -7,8 +7,10 @@ from prophecy.utils import *
 from l1_pipeline.graph import *
 
 def pipeline(spark: SparkSession) -> None:
-    df_finance_sp_500_companies = finance_sp_500_companies(spark)
-    df_apply_company_size_class = apply_company_size_class(spark, df_finance_sp_500_companies)
+    df_finance_silver_sp_500_stock_daily = finance_silver_sp_500_stock_daily(spark)
+    df_finance_sp_500_companies_1 = finance_sp_500_companies_1(spark)
+    df_by_symbol = by_symbol(spark, df_finance_silver_sp_500_stock_daily, df_finance_sp_500_companies_1)
+    df_apply_company_size_class = apply_company_size_class(spark, df_by_symbol)
 
 def main():
     spark = SparkSession.builder.enableHiveSupport().appName("l1_pipeline").getOrCreate()

@@ -21,6 +21,7 @@
     },
     "id" : "1",
     "uri" : "pipelines/l1_pipeline",
+    "sourceSuggestions" : [ ],
     "pipelineSettingsInfo" : {
       "applicationName" : "l1_pipeline",
       "hasApplication" : true,
@@ -92,53 +93,38 @@
     "configurationVersion" : "v2"
   },
   "connections" : [ {
-    "id" : "yAJH7j2tlWwxNQ63c0WPc$$TgrSO0JDHRjkHwOk6KQ8a",
-    "source" : "OnclRkebzzwUvmReKby8R$$E_t2lLGIOSPZ2da2hhYx1",
-    "sourcePort" : "WgbzX22zPtcjFK_8VpKlD$$w6o5Km1M1h4QWDkJo52pQ",
+    "id" : "quogevS3Dm-9EvQRtYIe1$$gTlr2iD8sdzWIl2KBTEjf",
+    "source" : "MvgfAm607J8bgeYaUG_ue$$1asDXtHh4OkQSgJYy2Fgs",
+    "sourcePort" : "rL4xeURwi4U1aujWarltJ$$1Lx_MbDyiI_yNxRjKhPgL",
+    "target" : "aS8k1HSMx0TUvF4Xinlbu$$tLkbE77O-TWy5G1jLG8mE",
+    "targetPort" : "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr"
+  }, {
+    "id" : "TTcc23C7pAgy-MazJ4U1H$$Gp8fMAuNta9WNrMCGTFtL",
+    "source" : "H8Lz5FulRh3Yqzs8rnQbF",
+    "sourcePort" : "JzVroLu_GE4GA23yb8Qik",
+    "target" : "aS8k1HSMx0TUvF4Xinlbu$$tLkbE77O-TWy5G1jLG8mE",
+    "targetPort" : "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H"
+  }, {
+    "id" : "ySKgvSbfad9byNUIsV5_U$$aZzFCfUTFkHUq6t4AAyrP",
+    "source" : "aS8k1HSMx0TUvF4Xinlbu$$tLkbE77O-TWy5G1jLG8mE",
+    "sourcePort" : "8rOk7OBdbWcKpsFCwMDNJ$$9YWlNiN6su4wLIeAm63HY",
     "target" : "sXuebuz1TAwcRrKiRzjAu$$3U0UofdfmqdqJ1B-tiVAw",
     "targetPort" : "K8nV5esFFCySSZm6OSDjy$$8QkA-8uEYQKKogiPMkL-F"
   } ],
   "processes" : {
-    "OnclRkebzzwUvmReKby8R$$E_t2lLGIOSPZ2da2hhYx1" : {
-      "id" : "OnclRkebzzwUvmReKby8R$$E_t2lLGIOSPZ2da2hhYx1",
-      "component" : "Source",
-      "metadata" : {
-        "label" : "finance_sp_500_companies",
-        "slug" : "finance_sp_500_companies",
-        "x" : -420,
-        "y" : -280,
-        "phase" : 0,
-        "cache" : false,
-        "detailedStats" : false,
-        "isImported" : false
-      },
-      "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "WgbzX22zPtcjFK_8VpKlD$$w6o5Km1M1h4QWDkJo52pQ",
-          "slug" : "out"
-        } ],
-        "selectedInputFields" : [ ],
-        "isCustomOutputSchema" : false,
-        "autoUpdateOnRun" : false
-      },
-      "properties" : {
-        "datasetId" : "datasets/finance_sp_500_companies"
-      }
-    },
     "sXuebuz1TAwcRrKiRzjAu$$3U0UofdfmqdqJ1B-tiVAw" : {
       "id" : "sXuebuz1TAwcRrKiRzjAu$$3U0UofdfmqdqJ1B-tiVAw",
       "component" : "SchemaTransform",
       "metadata" : {
         "label" : "apply_company_size_class",
         "slug" : "apply_company_size_class",
-        "x" : -240,
-        "y" : -280,
+        "x" : -40,
+        "y" : -320,
         "phase" : 0,
         "cache" : false,
         "detailedStats" : false,
         "isImported" : false,
-        "comment" : "Assigns company size categories and flags businesses that may pose investment risks.",
+        "comment" : "Enriches company records with classifications such as size, tier, risk level, region, employee scale, and technology subsector, enabling more targeted business analysis and decision-making.",
         "autoUpdateComment" : true,
         "dataPreview" : false,
         "showRecordsCount" : false
@@ -147,6 +133,596 @@
         "inputs" : [ {
           "id" : "K8nV5esFFCySSZm6OSDjy$$8QkA-8uEYQKKogiPMkL-F",
           "slug" : "in0",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "Exchange",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Stock exchange where the company is listed.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Shortname",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Abbreviated name of the company for quick reference.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Longname",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Full legal name of the company.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Sector",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Industry sector to which the company belongs.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Industry",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The business industry in which the company operates.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Currentprice",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The latest trading price of the company's stock.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Marketcap",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The total market value of the company's outstanding shares.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Ebitda",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The company's earnings before interest, taxes, depreciation, and amortization, reflecting operational profitability.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Revenuegrowth",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The rate at which the company's revenue is increasing or decreasing over time.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "City",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "City where the company's headquarters is located.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "State",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "State or region of the company's headquarters.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Country",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Country where the company is based.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Fulltimeemployees",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Total number of full-time employees working at the company.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Longbusinesssummary",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Detailed description of the company's business operations and activities.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Weight",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Proportion of the company's representation in the S&P 500 index.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "high",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The highest price reached by the stock during the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "adj_close",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The closing price of the stock adjusted for dividends and splits, reflecting the true value for investors.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "open",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The price at which the stock started trading on the given day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "volume",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The total number of shares traded during the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "low",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The lowest price reached by the stock during the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "symbol",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The ticker symbol representing the specific stock.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "date",
+              "type" : "date",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The trading day for the stock data, formatted as YYYY-MM-DD.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "close",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The final trading price of the stock at the end of the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "ingested_at",
+              "type" : "timestamp",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The timestamp when the stock data was recorded into the system.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ {
+          "id" : "HsO3Jy7LKxPMXFfUBWk7e$$WS-ov3Cx7Uvd5rZqzFrrL",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "importLanguage" : "sql",
+        "importString" : "",
+        "transformations" : [ {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "company_size_class()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Marketcap",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "composite_tier()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Marketcap",
+              "hasError" : false
+            }, {
+              "paramName" : "Revenuegrowth",
+              "hasError" : false
+            }, {
+              "paramName" : "Ebitda",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "flag_investment_risk()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Marketcap",
+              "hasError" : false
+            }, {
+              "paramName" : "Revenuegrowth",
+              "hasError" : false
+            }, {
+              "paramName" : "Ebitda",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "regional_classification()"
+            },
+            "param_errors" : [ {
+              "paramName" : "State",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "employee_scale()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Fulltimeemployees",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        }, {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "tech_subsector_class()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Sector",
+              "hasError" : false
+            }, {
+              "paramName" : "Industry",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        } ],
+        "activeTab" : "transformations",
+        "columnsSelector" : [ ]
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.54&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+        "projectName" : "ProphecySparkBasicsPython"
+      }
+    },
+    "MvgfAm607J8bgeYaUG_ue$$1asDXtHh4OkQSgJYy2Fgs" : {
+      "id" : "MvgfAm607J8bgeYaUG_ue$$1asDXtHh4OkQSgJYy2Fgs",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "finance_silver_sp_500_stock_daily",
+        "slug" : "finance_silver_sp_500_stock_daily",
+        "x" : -420,
+        "y" : -440,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "rL4xeURwi4U1aujWarltJ$$1Lx_MbDyiI_yNxRjKhPgL",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/finance_silver_sp_500_stock_daily"
+      }
+    },
+    "aS8k1HSMx0TUvF4Xinlbu$$tLkbE77O-TWy5G1jLG8mE" : {
+      "id" : "aS8k1HSMx0TUvF4Xinlbu$$tLkbE77O-TWy5G1jLG8mE",
+      "component" : "Join",
+      "metadata" : {
+        "label" : "by_symbol",
+        "slug" : "by_symbol",
+        "x" : -200,
+        "y" : -320,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "dataPreview" : false,
+        "showRecordsCount" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr",
+          "slug" : "finance_silver_sp_500_stock_daily",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "date",
+              "type" : "date",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The trading day for the stock data, formatted as YYYY-MM-DD.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "symbol",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The ticker symbol representing the specific stock.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "open",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The price at which the stock started trading on the given day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "high",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The highest price reached by the stock during the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "low",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The lowest price reached by the stock during the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "close",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The final trading price of the stock at the end of the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "adj_close",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The closing price of the stock adjusted for dividends and splits, reflecting the true value for investors.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "volume",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The total number of shares traded during the trading day.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "ingested_at",
+              "type" : "timestamp",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The timestamp when the stock data was recorded into the system.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        }, {
+          "id" : "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H",
+          "slug" : "finance_sp_500_companies_1",
           "schema" : {
             "type" : "struct",
             "fields" : [ {
@@ -298,7 +874,7 @@
           "isStreaming" : false
         } ],
         "outputs" : [ {
-          "id" : "HsO3Jy7LKxPMXFfUBWk7e$$WS-ov3Cx7Uvd5rZqzFrrL",
+          "id" : "8rOk7OBdbWcKpsFCwMDNJ$$9YWlNiN6su4wLIeAm63HY",
           "slug" : "out"
         } ],
         "selectedInputFields" : [ ],
@@ -306,87 +882,255 @@
         "autoUpdateOnRun" : false
       },
       "properties" : {
-        "importLanguage" : "sql",
-        "importString" : "",
-        "transformations" : [ {
-          "AddRule" : {
-            "expression" : {
-              "format" : "sql",
-              "expression" : "company_size_class()"
-            },
-            "param_errors" : [ {
-              "paramName" : "Marketcap",
-              "hasError" : false
-            } ]
+        "conditions" : [ {
+          "alias" : "finance_sp_500_companies_1",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "(finance_silver_sp_500_stock_daily.symbol = finance_sp_500_companies_1.Symbol)"
           },
-          "MissingColumn" : {
-            "sourceColumn" : "",
-            "defaultValue" : {
-              "expression" : "",
-              "format" : "python"
-            }
-          },
-          "DropColumn" : {
-            "sourceColumn" : ""
-          },
-          "kind" : "AddRule",
-          "RenameColumn" : {
-            "sourceColumn" : "",
-            "targetColumn" : ""
-          },
-          "AddReplaceColumn" : {
-            "sourceColumn" : "",
-            "expression" : {
-              "expression" : "",
-              "format" : "python"
-            }
-          }
-        }, {
-          "AddRule" : {
-            "expression" : {
-              "format" : "sql",
-              "expression" : "flag_investment_risk()"
-            },
-            "param_errors" : [ {
-              "paramName" : "Marketcap",
-              "hasError" : false
-            }, {
-              "paramName" : "Revenuegrowth",
-              "hasError" : false
-            }, {
-              "paramName" : "Ebitda",
-              "hasError" : false
-            } ]
-          },
-          "MissingColumn" : {
-            "sourceColumn" : "",
-            "defaultValue" : {
-              "expression" : "",
-              "format" : "python"
-            }
-          },
-          "DropColumn" : {
-            "sourceColumn" : ""
-          },
-          "kind" : "AddRule",
-          "RenameColumn" : {
-            "sourceColumn" : "",
-            "targetColumn" : ""
-          },
-          "AddReplaceColumn" : {
-            "sourceColumn" : "",
-            "expression" : {
-              "expression" : "",
-              "format" : "python"
-            }
-          }
+          "joinType" : "inner"
         } ],
-        "activeTab" : "transformations",
-        "columnsSelector" : [ ]
+        "expressions" : [ {
+          "target" : "Exchange",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Exchange"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Shortname",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Shortname"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Longname",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Longname"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Sector",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Sector"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Industry",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Industry"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Currentprice",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Currentprice"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Marketcap",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Marketcap"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Ebitda",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Ebitda"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Revenuegrowth",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Revenuegrowth"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "City",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.City"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "State",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.State"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Country",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Country"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Fulltimeemployees",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Fulltimeemployees"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Longbusinesssummary",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Longbusinesssummary"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "Weight",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_sp_500_companies_1.Weight"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "high",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.high"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "adj_close",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.adj_close"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "open",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.open"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "volume",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.volume"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "low",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.low"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "symbol",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.symbol"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "date",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.date"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "close",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.close"
+          },
+          "description" : "",
+          "_row_id" : null
+        }, {
+          "target" : "ingested_at",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "finance_silver_sp_500_stock_daily.ingested_at"
+          },
+          "description" : "",
+          "_row_id" : null
+        } ],
+        "hints" : [ {
+          "id" : "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr",
+          "alias" : "finance_silver_sp_500_stock_daily",
+          "hintType" : "none",
+          "propagateColumns" : false
+        }, {
+          "id" : "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H",
+          "alias" : "finance_sp_500_companies_1",
+          "hintType" : "none",
+          "propagateColumns" : false
+        } ],
+        "allIn1" : null,
+        "activeTab" : "conditions",
+        "columnsSelector" : [ "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Symbol", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##symbol", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##close", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Sector", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##low", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Fulltimeemployees", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Weight", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Country", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Shortname", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Marketcap", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##date", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Currentprice", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Longbusinesssummary", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Ebitda", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##City", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##open", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##symbol", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##ingested_at", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Revenuegrowth", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Exchange", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##volume", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##adj_close", "uwG6h2fmJZylV4Qz8vxnw$$GjEtMe96dQ3raQ8BoT6Rr##high", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Industry", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##Longname", "CJgakiUtqqMLFsZJC_5Cu$$oStK-qDQf5IHvZ25wdl2H##State" ],
+        "allIn0" : null,
+        "whereClause" : null,
+        "headAlias" : "finance_silver_sp_500_stock_daily"
       },
       "componentInfo" : {
-        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.54&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.54&projectSubscriptionProjectId=12654&path=gems/Join",
         "projectName" : "ProphecySparkBasicsPython"
+      }
+    },
+    "H8Lz5FulRh3Yqzs8rnQbF" : {
+      "id" : "H8Lz5FulRh3Yqzs8rnQbF",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "finance_sp_500_companies_1",
+        "slug" : "finance_sp_500_companies_1",
+        "x" : -420,
+        "y" : -260,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "JzVroLu_GE4GA23yb8Qik",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/finance_sp_500_companies"
       }
     }
   },
@@ -396,54 +1140,5 @@
     "selectedInputFields" : [ ],
     "isCustomOutputSchema" : false,
     "autoUpdateOnRun" : false
-  },
-  "diagnostics" : [ {
-    "property" : "$.workflow.metainfo.functions.businessRules.rules[4].data[1].outputs[0]",
-    "range" : {
-      "start" : {
-        "line" : 0,
-        "character" : 0
-      },
-      "end" : {
-        "line" : 0,
-        "character" : 0
-      }
-    },
-    "severity" : 2,
-    "message" : "Empty expression for column: `Workforce_Size` at row = 2. Please provide a valid output expression. Default expression: NULL.",
-    "tags" : [ ],
-    "relatedInformation" : [ ]
-  }, {
-    "property" : "$.workflow.metainfo.functions.businessRules.rules[4].data",
-    "range" : {
-      "start" : {
-        "line" : 0,
-        "character" : 0
-      },
-      "end" : {
-        "line" : 0,
-        "character" : 0
-      }
-    },
-    "severity" : 2,
-    "message" : "Missing data for the case when all the inputs are `Any`",
-    "tags" : [ ],
-    "relatedInformation" : [ ]
-  }, {
-    "property" : "$.workflow.metainfo.functions.businessRules.rules[4].data[1]",
-    "range" : {
-      "start" : {
-        "line" : 0,
-        "character" : 0
-      },
-      "end" : {
-        "line" : 0,
-        "character" : 0
-      }
-    },
-    "severity" : 1,
-    "message" : "Invalid SQL Expression at row = 2 Error: \n[PARSE_SYNTAX_ERROR] Syntax error at or near '('.(line 1, pos 11)\n\n== SQL ==\nCASE  WHEN ( Fulltimeemployees BETWEEN >= 100000 and <10000 ) THEN NULL END\n-----------^^^\n",
-    "tags" : [ ],
-    "relatedInformation" : [ ]
-  } ]
+  }
 }

@@ -6,5 +6,5 @@ from prophecy.libs import typed_lit
 from l1_pipeline.config.ConfigStore import *
 from l1_pipeline.functions import *
 
-def finance_sp_500_companies(spark: SparkSession) -> DataFrame:
-    return spark.read.table("`danyelle`.`finance`.`sp_500_companies`")
+def finance_silver_sp_500_stock_daily(spark: SparkSession) -> DataFrame:
+    return spark.read.table("`danyelle`.`finance`.`silver_sp_500_stock_daily`")

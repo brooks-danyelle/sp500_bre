@@ -45,3 +45,24 @@ def tech_subsector_class(sector: Column=lambda: col("Sector"), industry: Column=
         .when((sector == lit("Technology")), lit("Other Tech"))\
         .otherwise(lit("Not Tech"))\
         .alias("Subsector")
+
+@execute_rule
+def employee_scale(fulltimeemployees: Column=lambda: col("Fulltimeemployees")):
+    return when((fulltimeemployees >= lit(100000)), lit("Enterprise"))\
+        .when(((fulltimeemployees >= lit(100000)) & (fulltimeemployees <= lit(99999))), lit("Large"))\
+        .when(((fulltimeemployees >= lit(1000)) & (fulltimeemployees <= lit(99999))), lit("Medium"))\
+        .when((fulltimeemployees < lit(1000)), lit("Small"))\
+        .otherwise(lit("Unknown"))\
+        .alias("Workforce_Size")
+
+@execute_rule
+def composite_tier(
+        marketcap: Column=lambda: col("Marketcap"), 
+        revenuegrowth: Column=lambda: col("Revenuegrowth"), 
+        ebitda: Column=lambda: col("Ebitda")
+):
+    return when((((marketcap >= lit(100000000000)) & (revenuegrowth >= lit(0.1))) & (ebitda > lit(0))), lit("A"))\
+        .when(((marketcap >= lit(50000000000)) & (revenuegrowth >= lit(0))), lit("B"))\
+        .when(((marketcap >= lit(10000000000)) & (revenuegrowth >= lit(-0.05))), lit("C"))\
+        .otherwise(lit("D"))\
+        .alias("Composite_Tier")

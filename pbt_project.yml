@@ -21,6 +21,7 @@ pipelines:
     createdAt: '2026-01-22 20:19:01'
     datasets:
       inputs:
+      - datasets/finance_silver_sp_500_stock_daily
       - datasets/finance_sp_500_companies
       outputs: []
     subgraphs: []
@@ -39,6 +40,19 @@ datasets:
         description: ''
         author: brooks.danyelle@prophecy.io
         createdAt: '2026-01-22 20:20:14'
+  datasets/finance_silver_sp_500_stock_daily:
+    name: finance_silver_sp_500_stock_daily
+    description: ''
+    author: brooks.danyelle@prophecy.io
+    createdAt: '2026-01-22 22:43:25'
+    mode: batch
+    physicalDatasets:
+      danyelle-spark-dbx:
+        fabricId: 25374
+        datasetType: Database
+        description: ''
+        author: brooks.danyelle@prophecy.io
+        createdAt: '2026-01-22 22:43:25'
 templates: {}
 jobs: {}
 gemContainer:
@@ -88,6 +102,14 @@ functions:
       createdAt: '2022-12-15 18:04:50'
     businessRules/employee_scale:
       name: employee_scale
+      description: ''
+      tags: []
+      inputs: []
+      outputs: []
+      author: brooks.danyelle@prophecy.io
+      createdAt: '2022-12-15 18:04:50'
+    businessRules/composite_tier:
+      name: composite_tier
       description: ''
       tags: []
       inputs: []
