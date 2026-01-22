@@ -1,0 +1,118 @@
+version: 1
+schema:
+  type: struct
+  fields:
+  - name: Exchange
+    type: string
+    nullable: true
+    metadata:
+      description: Stock exchange where the company is listed.
+      mappings: []
+      tags: []
+  - name: Symbol
+    type: string
+    nullable: true
+    metadata:
+      description: Ticker symbol used to identify the company on the stock exchange.
+      mappings: []
+      tags: []
+  - name: Shortname
+    type: string
+    nullable: true
+    metadata:
+      description: Abbreviated name of the company for quick reference.
+      mappings: []
+      tags: []
+  - name: Longname
+    type: string
+    nullable: true
+    metadata:
+      description: Full legal name of the company.
+      mappings: []
+      tags: []
+  - name: Sector
+    type: string
+    nullable: true
+    metadata:
+      description: Industry sector to which the company belongs.
+      mappings: []
+      tags: []
+  - name: Industry
+    type: string
+    nullable: true
+    metadata:
+      description: The business industry in which the company operates.
+      mappings: []
+      tags: []
+  - name: Currentprice
+    type: double
+    nullable: true
+    metadata:
+      description: The latest trading price of the company's stock.
+      mappings: []
+      tags: []
+  - name: Marketcap
+    type: long
+    nullable: true
+    metadata:
+      description: The total market value of the company's outstanding shares.
+      mappings: []
+      tags: []
+  - name: Ebitda
+    type: long
+    nullable: true
+    metadata:
+      description: The company's earnings before interest, taxes, depreciation, and
+        amortization, reflecting operational profitability.
+      mappings: []
+      tags: []
+  - name: Revenuegrowth
+    type: double
+    nullable: true
+    metadata:
+      description: The rate at which the company's revenue is increasing or decreasing
+        over time.
+      mappings: []
+      tags: []
+  - name: City
+    type: string
+    nullable: true
+    metadata:
+      description: City where the company's headquarters is located.
+      mappings: []
+      tags: []
+  - name: State
+    type: string
+    nullable: true
+    metadata:
+      description: State or region of the company's headquarters.
+      mappings: []
+      tags: []
+  - name: Country
+    type: string
+    nullable: true
+    metadata:
+      description: Country where the company is based.
+      mappings: []
+      tags: []
+  - name: Fulltimeemployees
+    type: long
+    nullable: true
+    metadata:
+      description: Total number of full-time employees working at the company.
+      mappings: []
+      tags: []
+  - name: Longbusinesssummary
+    type: string
+    nullable: true
+    metadata:
+      description: Detailed description of the company's business operations and activities.
+      mappings: []
+      tags: []
+  - name: Weight
+    type: double
+    nullable: true
+    metadata:
+      description: Proportion of the company's representation in the S&P 500 index.
+      mappings: []
+      tags: []

@@ -1,0 +1,378 @@
+{
+  "metainfo" : {
+    "migrationVersions" : {
+      "gemBuilderVersion" : "v1",
+      "unitTestNullDataMigrated" : true
+    },
+    "functions" : {
+      "businessRules" : {
+        "rules" : [ ],
+        "sharedRules" : [ ]
+      }
+    },
+    "codeGenConfiguration" : {
+      "editableConfig" : true,
+      "plibVersion" : {
+        "mavenVersion" : "8.16.1",
+        "pyPiVersion" : "2.1.9"
+      },
+      "sparkConfigJinjaEnabled" : true,
+      "workflowMode" : "batch"
+    },
+    "id" : "1",
+    "uri" : "pipelines/l1_pipeline",
+    "pipelineSettingsInfo" : {
+      "applicationName" : "l1_pipeline",
+      "hasApplication" : true,
+      "isFunctionsPackageDirDefined" : true,
+      "isNullValuesInUnitTestsEnabled" : true,
+      "sparkConfigOptions" : {
+        "disableSparkCreationTimeConfigGeneration" : true
+      }
+    },
+    "language" : "python",
+    "fabricId" : "25374",
+    "frontEndLanguage" : "sql",
+    "mode" : "batch",
+    "udfs" : {
+      "language" : "python",
+      "udfs" : [ ],
+      "functionPackageName" : "brooksdanyelleprophecyioteam.sp500breexample.functions",
+      "sharedFunctionPackageNames" : [ "prophecy.spark_basic.functions", "prophecy.warehouse.functions" ]
+    },
+    "udafs" : {
+      "language" : "python",
+      "code" : ""
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "oldCommon" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : { },
+      "instances" : { },
+      "selected" : "default",
+      "nonEditable" : [ ],
+      "isSubscribedPipelineWithPipelineConfigs" : false
+    },
+    "sparkConf" : [ {
+      "name" : "spark.default.parallelism",
+      "value" : "4"
+    }, {
+      "name" : "spark.sql.legacy.allowUntypedScalaUDF",
+      "value" : "true"
+    } ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ],
+    "dependentProjectExternalDependencies" : [ {
+      "projectUID" : "12654",
+      "projectName" : "ProphecySparkBasicsPython",
+      "externalDependencies" : [ ]
+    }, {
+      "projectUID" : "12655",
+      "projectName" : "ProphecyWarehousePython",
+      "externalDependencies" : [ ]
+    } ],
+    "isImported" : false,
+    "interimMode" : "Full",
+    "interimModeEnabled" : true,
+    "visualCodeInterimMode" : "Disabled",
+    "recordsLimit" : {
+      "enabled" : false,
+      "value" : 1000
+    },
+    "topLevelPackage" : "l1_pipeline",
+    "configTopLevelPackage" : "l1_pipeline",
+    "configurationVersion" : "v2"
+  },
+  "connections" : [ {
+    "id" : "yAJH7j2tlWwxNQ63c0WPc$$TgrSO0JDHRjkHwOk6KQ8a",
+    "source" : "OnclRkebzzwUvmReKby8R$$E_t2lLGIOSPZ2da2hhYx1",
+    "sourcePort" : "WgbzX22zPtcjFK_8VpKlD$$w6o5Km1M1h4QWDkJo52pQ",
+    "target" : "sXuebuz1TAwcRrKiRzjAu$$3U0UofdfmqdqJ1B-tiVAw",
+    "targetPort" : "K8nV5esFFCySSZm6OSDjy$$8QkA-8uEYQKKogiPMkL-F"
+  } ],
+  "processes" : {
+    "OnclRkebzzwUvmReKby8R$$E_t2lLGIOSPZ2da2hhYx1" : {
+      "id" : "OnclRkebzzwUvmReKby8R$$E_t2lLGIOSPZ2da2hhYx1",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "finance_sp_500_companies",
+        "slug" : "finance_sp_500_companies",
+        "x" : -420,
+        "y" : -280,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "WgbzX22zPtcjFK_8VpKlD$$w6o5Km1M1h4QWDkJo52pQ",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/finance_sp_500_companies"
+      }
+    },
+    "sXuebuz1TAwcRrKiRzjAu$$3U0UofdfmqdqJ1B-tiVAw" : {
+      "id" : "sXuebuz1TAwcRrKiRzjAu$$3U0UofdfmqdqJ1B-tiVAw",
+      "component" : "SchemaTransform",
+      "metadata" : {
+        "label" : "apply_company_size_class",
+        "slug" : "apply_company_size_class",
+        "x" : -240,
+        "y" : -280,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "comment" : "Assigns a size category to each company, enabling segmentation by company scale.",
+        "autoUpdateComment" : true,
+        "dataPreview" : false,
+        "showRecordsCount" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "K8nV5esFFCySSZm6OSDjy$$8QkA-8uEYQKKogiPMkL-F",
+          "slug" : "in0",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "Exchange",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Stock exchange where the company is listed.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Symbol",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Ticker symbol used to identify the company on the stock exchange.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Shortname",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Abbreviated name of the company for quick reference.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Longname",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Full legal name of the company.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Sector",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Industry sector to which the company belongs.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Industry",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The business industry in which the company operates.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Currentprice",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The latest trading price of the company's stock.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Marketcap",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The total market value of the company's outstanding shares.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Ebitda",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The company's earnings before interest, taxes, depreciation, and amortization, reflecting operational profitability.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Revenuegrowth",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "The rate at which the company's revenue is increasing or decreasing over time.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "City",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "City where the company's headquarters is located.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "State",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "State or region of the company's headquarters.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Country",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Country where the company is based.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Fulltimeemployees",
+              "type" : "long",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Total number of full-time employees working at the company.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Longbusinesssummary",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Detailed description of the company's business operations and activities.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "Weight",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "Proportion of the company's representation in the S&P 500 index.",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ {
+          "id" : "HsO3Jy7LKxPMXFfUBWk7e$$WS-ov3Cx7Uvd5rZqzFrrL",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "importLanguage" : "sql",
+        "importString" : "",
+        "transformations" : [ {
+          "AddRule" : {
+            "expression" : {
+              "format" : "sql",
+              "expression" : "company_size_class()"
+            },
+            "param_errors" : [ {
+              "paramName" : "Marketcap",
+              "hasError" : false
+            } ]
+          },
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddRule",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "",
+            "expression" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          }
+        } ],
+        "activeTab" : "transformations",
+        "columnsSelector" : [ ]
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.54&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+        "projectName" : "ProphecySparkBasicsPython"
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ],
+    "isCustomOutputSchema" : false,
+    "autoUpdateOnRun" : false
+  },
+  "diagnostics" : [ {
+    "property" : "$.workflow.metainfo.functions.businessRules.rules[0].data",
+    "range" : {
+      "start" : {
+        "line" : 0,
+        "character" : 0
+      },
+      "end" : {
+        "line" : 0,
+        "character" : 0
+      }
+    },
+    "severity" : 2,
+    "message" : "Missing data for the case when all the inputs are `Any`",
+    "tags" : [ ],
+    "relatedInformation" : [ ]
+  } ]
+}
