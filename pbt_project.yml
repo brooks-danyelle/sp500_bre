@@ -1,6 +1,6 @@
 name: sp500_bre_example
 description: ''
-version: 0.0.1
+version: 0.0.2
 author: brooks.danyelle@prophecy.io
 language: python
 buildSystem: ''
